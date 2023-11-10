@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2019 The Android Open-Source Project
+# Copyright (C) 2023 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,17 +13,18 @@
 # limitations under the License.
 #
 
-PRODUCT_VIRTUAL_AB_OTA := true
+# This is a recommended set of common components to enable MTE for.
 
-PRODUCT_VENDOR_PROPERTIES += ro.virtual_ab.enabled=true
-
-PRODUCT_PACKAGES += \
-    e2fsck_ramdisk \
-    resize2fs_ramdisk \
-    tune2fs_ramdisk
-
-# For dedicated recovery partitions, we need to include fs tools
-PRODUCT_PACKAGES += \
-    e2fsck.recovery \
-    resize2fs.recovery \
-    tune2fs.recovery
+PRODUCT_MEMTAG_HEAP_ASYNC_DEFAULT_INCLUDE_PATHS := \
+    external/android-clat \
+    external/iproute2 \
+    external/iptables \
+    external/mtpd \
+    external/ppp \
+    hardware/st/nfc \
+    hardware/st/secure_element \
+    hardware/st/secure_element2 \
+    packages/modules/StatsD \
+    system/bpf \
+    system/netd/netutil_wrappers \
+    system/netd/server
